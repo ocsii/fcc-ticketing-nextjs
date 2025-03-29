@@ -1,5 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Nav from "./(components)/Nav";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/free-solid-svg-icons";
+
+config.autoAddCss = false;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +28,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="flex h-screen max-h-screen flex-col">
+          <Nav />
+          <div className="bg-page text-default-text flex-grow overflow-y-auto">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
